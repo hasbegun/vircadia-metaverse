@@ -1,6 +1,6 @@
 #! /bin/bash
 
-BASE=/home/cadia/Iamus
+BASE=/home/cadia/vircadia-metaverse
 
 # Default location for logs is in the Iamus sub-directory
 LOGDIR=${BASE}/Logs

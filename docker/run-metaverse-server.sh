@@ -6,11 +6,16 @@ cd "${BASE}"
 
 DVERSION=latest
 
+# remote image
+# IMG_NAME=ghcr.io/vircadia/iamus
+IMG_NAME=metaverseserver
+
 docker run -d \
     --name=metaverseserver \
     --restart=unless-stopped \
     -p 9400:9400 \
     -e IAMUS_CONFIG_FILE=/home/cadia/config/iamus.json \
-    --network="host" \
     --volume ${BASE}/config:/home/cadia/config \
-    ghcr.io/vircadia/iamus:${DVERSION}
+    ${IMG_NAME}:${DVERSION}
+
+    # --network="host" \
