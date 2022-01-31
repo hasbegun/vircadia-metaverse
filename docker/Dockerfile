@@ -4,7 +4,7 @@ FROM node:14 as iamus-build
 # default is 'vircadia'.
 ARG REPO=hasbegun
 # default is 'master'
-ARG BRANCH=master
+ARG BRANCH=dev
 
 ENV METAVERSE_HOME=/usr/local/src/vircadia-metaverse
 
