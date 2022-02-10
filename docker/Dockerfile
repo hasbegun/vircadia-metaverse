@@ -29,7 +29,7 @@ RUN cd ${METAVERSE_HOME} \
 FROM node:14 as iamus-run
 
 # DEV pkgs. Not necessary for prod.
-RUN apt update && apt install -y sudo vim git curl
+RUN apt update && apt install -y sudo vim git curl netcat
 
 ENV USER=cadia
 ENV METAVERSE_DIR=vircadia-metaverse

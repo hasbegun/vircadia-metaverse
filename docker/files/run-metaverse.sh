@@ -12,6 +12,12 @@ mkdir -p "${LOGDIR}"
 
 LOGFILE=${LOGDIR}/$(date --utc "+%Y%m%d.%H%M").log
 
+# check if mongo is ready.
+until nc -z vircadia-mongodb 27017
+do
+  echo "Waiting for Vircadia Mongodb gets ready..."
+  sleep 1
+done
+
 cd "${BASE}"
 node dist/index.js >> ${LOGFILE} 2>&1
-
