@@ -4,7 +4,7 @@ FROM node:14 as iamus-build
 # default is 'vircadia'.
 ARG REPO=hasbegun
 # default is 'master'
-ARG BRANCH=dev
+ARG BRANCH=dev_ssl
 
 ENV METAVERSE_HOME=/usr/local/src/vircadia-metaverse
 
@@ -57,6 +57,11 @@ COPY --chown=${USER}:${USER} ./files/GetVersion.sh /home/${USER}
 
 # directory created so caller can mount and use a config file from here
 VOLUME /home/${USER}/config
+
+# Copy key and cert
+COPY --chown=${USER}:${USER} ./files/privkey.pem /home/${USER}/config
+COPY --chown=${USER}:${USER} ./files/cert.pem /home/${USER}/config
+COPY --chown=${USER}:${USER} ./files/chain.pem /home/${USER}/config
 
 EXPOSE 9400
 
