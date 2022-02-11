@@ -129,7 +129,6 @@ initializeConfiguration()
   let server: http.Server | https.Server;
   if (IsNotNullOrEmpty(Config.server["key-file"])
         && IsNotNullOrEmpty(Config.server["cert-file"])) {
-    Logger.info(`certfile: ${Config.server["cert-file"]} keyfile: Config.server["key-file"]`);
     try {
       const httpsOptions = {
         key:  fs.readFileSync(Config.server["key-file"], 'utf8'),

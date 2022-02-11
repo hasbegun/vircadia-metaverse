@@ -62,6 +62,7 @@ VOLUME /home/${USER}/config
 COPY --chown=${USER}:${USER} ./files/privkey.pem /home/${USER}/config
 COPY --chown=${USER}:${USER} ./files/cert.pem /home/${USER}/config
 COPY --chown=${USER}:${USER} ./files/chain.pem /home/${USER}/config
+COPY --chown=${USER}:${USER} ./config/iamus.json /home/${USER}/config
 
 EXPOSE 9400
 
