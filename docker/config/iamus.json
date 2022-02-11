@@ -7,9 +7,9 @@
         "dashboard-url": "http://localhost:8080"
     },
     "server": {
-        "cert-file": "config/cert.pem",
-        "key-file": "config/privkey.pem",
-        "chain-file": "config/chain.pem"
+        "cert-file": "/home/cadia/config/cert.pem",
+        "key-file": "/home/cadia/config/privkey.pem",
+        "chain-file": "/home/cadia/config/chain.pem"
     },
     "database": {
         "db": "domainstore",

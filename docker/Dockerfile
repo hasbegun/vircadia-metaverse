@@ -1,10 +1,11 @@
 # Dockerfile for building a runable version of the Iamus metaverse-server
 FROM node:14 as iamus-build
 
-# default is 'vircadia'.
-ARG REPO=hasbegun
 # default is 'master'
 ARG BRANCH=dev_ssl
+
+# default is 'vircadia'.
+ARG REPO=hasbegun
 
 ENV METAVERSE_HOME=/usr/local/src/vircadia-metaverse
 
