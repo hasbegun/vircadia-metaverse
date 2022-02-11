@@ -2,6 +2,6 @@
 # Stops the metaverse server and cleans up
 
 echo "==== stopping metaverse-server"
-docker stop metaverseserver
+docker stop metaverse-server
 echo "==== removing old metaverse-server image"
-docker rm metaverseserver
+docker rm metaverse-server

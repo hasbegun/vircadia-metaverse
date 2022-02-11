@@ -69,11 +69,27 @@ initializeConfiguration()
   // Setup the logger of messages
   expr.use(morgan('dev', morganOptions));
 
+  // --- original
   // Set up the CORS allows headers and option handshakes
   expr.use(cors({
     'allowedHeaders': [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
     'credentials': true
   } ));
+  // --------------
+
+  // -------------
+  // const allowedOrigins = ['https://dashboard.innoxai.com', 'https://domain.innoxai.com'];
+  // const options: cors.CorsOptions = {
+  //   allowedHeaders: [ 'Origin', 'authorization', 'content-type',
+  //     'x-vircadia-error-handle' ],
+  //   credentials: true,
+  //   methods:'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+  //   origin: allowedOrigins,
+  //   preflightContinue: false, // need to justify this option. Also more sure line 141 is good.
+  // };
+  //
+  // expr.use(cors(options));
+  // --------------
 
   // Most of the requests are JSON in an out.
   // This parses the JSON and adds 'Request.body'
@@ -124,6 +140,10 @@ initializeConfiguration()
   // If all the other routing didn't work, finally make errors
   expr.use(createAPIRouter('routes-last'));
 
+  // -----------
+  // //enable pre-flight
+  // expr.options('*', cors(options));
+  // -----------
   // Build server to listen for requests
   // If certificates are provided, create an https server
   let server: http.Server | https.Server;

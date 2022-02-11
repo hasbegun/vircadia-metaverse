@@ -2,9 +2,13 @@
     "metaverse": {
         "metaverse-name": "TestMetaverse",
         "metaverse-nick-name": "TestMetaverse",
-        "metaverse-server-url": "http://localhost:9400",
-        "default-ice-server-url": "http://localhost:7337",
-        "dashboard-url": "http://localhost:8080"
+        "metaverse-server-url": "https://lmetaverse.innoxai.com",
+        "default-ice-server-url": "http://ice-server.innoxai.com",
+        "dashboard-url": "http://mataverse-dashboard.innoxai.com"
+    },
+    "server": {
+        "cert-file": "/home/cadia/config/metaverse.crt",
+        "key-file": "/home/cadia/config/metaverse.key"
     },
     "database": {
         "db": "domainstore",

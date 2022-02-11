@@ -26,7 +26,7 @@ export let Config = {
         'metaverse-nick-name': 'Noobie',
         'metaverse-server-url': '',   // if empty, set to self
         'default-ice-server-url': '', // if empty, set to self
-        'dashboard-url': 'http://localhost:8080'
+        'dashboard-url': ''
     },
     // Server network parameters
     'server': {
@@ -119,7 +119,7 @@ export let Config = {
     },
     // Setup for MongoDB access
     'database': {
-        'db-host': 'vircadia-mongodb',
+        'db-host': '',
         'db-port': 27017,
         'db': 'tester',
         'db-user': 'metaverse',

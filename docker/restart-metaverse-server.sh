@@ -1,7 +1,7 @@
 echo "==== stopping metaverseserver"
-docker stop metaverseserver
+docker stop metaverse-server
 echo "==== removing old metaverseserver image"
-docker rm metaverseserver
+docker rm metaverse-server
 echo "==== starting metaverseserver"
 ./run-metaverse-server.sh
 
