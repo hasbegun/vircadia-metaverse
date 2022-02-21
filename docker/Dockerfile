@@ -1,11 +1,9 @@
 # Dockerfile for building a runable version of the Iamus metaverse-server
 FROM node:14 as iamus-build
 
-# default is 'master'
-ARG BRANCH=dev_ssl
-
-# default is 'vircadia'.
-ARG REPO=hasbegun
+ARG REPO=vircadia
+ARG BRANCH=master
+ARG COMMIT=""
 
 ENV METAVERSE_HOME=/usr/local/src/vircadia-metaverse
 
@@ -16,7 +14,6 @@ RUN mkdir -p /usr/local/src \
 RUN mkdir -p /usr/local/src \
     && cd /usr/local/src && \
     git clone --depth 1 --branch ${BRANCH} https://github.com/${REPO}/vircadia-metaverse.git
-
 
 RUN cd ${METAVERSE_HOME} \
     && npm install
@@ -29,8 +26,9 @@ RUN cd ${METAVERSE_HOME} \
 # FROM node:14-slim as iamus-run    # 'slim' works so consider using it after debugging
 FROM node:14 as iamus-run
 
+RUN apt-get update && apt-get install -y netcat
 # DEV pkgs. Not necessary for prod.
-RUN apt update && apt install -y sudo vim git curl netcat
+RUN apt-get install -y sudo vim git curl
 
 ENV USER=cadia
 ENV METAVERSE_DIR=vircadia-metaverse
@@ -60,9 +58,8 @@ COPY --chown=${USER}:${USER} ./files/GetVersion.sh /home/${USER}
 VOLUME /home/${USER}/config
 
 # Copy key and cert
-COPY --chown=${USER}:${USER} ./files/privkey.pem /home/${USER}/config
-COPY --chown=${USER}:${USER} ./files/cert.pem /home/${USER}/config
-COPY --chown=${USER}:${USER} ./files/chain.pem /home/${USER}/config
+COPY --chown=${USER}:${USER} ./files/*.key /home/${USER}/config
+COPY --chown=${USER}:${USER} ./files/*.crt /home/${USER}/config
 COPY --chown=${USER}:${USER} ./config/iamus.json /home/${USER}/config
 
 EXPOSE 9400

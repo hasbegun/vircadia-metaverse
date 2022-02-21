@@ -26,7 +26,7 @@ export let Config = {
         'metaverse-nick-name': 'Noobie',
         'metaverse-server-url': '',   // if empty, set to self
         'default-ice-server-url': '', // if empty, set to self
-        'dashboard-url': 'http://localhost:8080'
+        'dashboard-url': 'https://dashboard.innoxai.com'
     },
     // Server network parameters
     'server': {

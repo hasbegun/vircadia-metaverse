@@ -71,7 +71,10 @@ initializeConfiguration()
 
   // Set up the CORS allows headers and option handshakes
   expr.use(cors({
-    'allowedHeaders': [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
+    'allowedHeaders': [ 'authorization',
+      'content-type', 'x-vircadia-error-handle',
+      'X-Requested-With', 'X-HTTP-Method-Override',
+     ],
     'credentials': true
   } ));
 

@@ -105,3 +105,6 @@ dist
 
 # Cert and key
 files/*.pem
+
+# Data files
+data/**

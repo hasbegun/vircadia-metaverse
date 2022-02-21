@@ -31,22 +31,22 @@ else
 fi
 
 if [ -z "$6" ]; then
-  CN="IT"
+  CN="metaverse.innoxai.com"
 else
   CN=$6
 fi
+DOMAIN=metaverse.$CN
+KEY=files/meraverse.key
+CRT=files/metaverse.crt
 
-# openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt
-KEY=files/privkey.pem
-CERT=files/cert.pem
-CHAIN=files/chain.pem
-
-openssl req -x509 -newkey rsa:4096 \
-    -keyout $KEY -nodes -out $CERT -sha256 -days 365 \
-    -subj "/C=$C/ST=$ST/L=$L/O=$O/OU=$OU/CN=$CN"
-
-cp $KEY $CHAIN
-cat $CERT >> $CHAIN
-
-echo "Country: $C, State: $ST, City: $L, Org: $O, Dept: $OU, CN=$CN"
-echo "Key file: $KEY, Cert file: $CERT, Cahin: $CHAIN"
+if [ ! -f $KEY ] || [ ! -f $CRT ]; then
+openssl req -x509 -nodes -days 365 \
+  -newkey rsa:4096 \
+  -subj "/C=$C/ST=$ST/L=$L/O=$O/OU=$OU/CN=$DOMAIN" \
+  -addext "subjectAltName=DNS:$CN" \
+  -keyout $KEY \
+  -out $CRT
+fi
+echo "Your key and cert can be found at files dir."
+echo "Country: $C, State: $ST, City: $L, Org: $O, Dept: $OU, CN=$DOMAIN"
+echo "Key file: $KEY, Cert file: $CERT"
