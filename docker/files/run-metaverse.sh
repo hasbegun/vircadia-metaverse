@@ -15,7 +15,7 @@ LOGFILE=${LOGDIR}/$(date --utc "+%Y%m%d.%H%M").log
 # check if mongo is ready.
 until nc -z vircadia-mongodb 27017
 do
-  echo "Waiting for Vircadia Mongodb gets ready..."
+  echo "Waiting for Vircadia Mongodb to be ready..."
   sleep 1
 done
 

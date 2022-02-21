@@ -36,7 +36,7 @@ else
   CN=$6
 fi
 DOMAIN=metaverse.$CN
-KEY=files/meraverse.key
+KEY=files/metaverse.key
 CRT=files/metaverse.crt
 
 if [ ! -f $KEY ] || [ ! -f $CRT ]; then

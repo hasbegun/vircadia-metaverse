@@ -7,8 +7,8 @@
         "dashboard-url": "http://mataverse-dashboard.innoxai.com"
     },
     "server": {
-        "cert-file": "/home/cadia/config/cert.cert",
-        "key-file": "/home/cadia/config/privkey.key"
+        "cert-file": "/home/cadia/config/metaverse.crt",
+        "key-file": "/home/cadia/config/metaverse.key"
     },
     "database": {
         "db": "domainstore",
