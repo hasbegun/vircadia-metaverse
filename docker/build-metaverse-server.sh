@@ -42,7 +42,7 @@ IMAGE_NAME=metaverse-server
 REPO=hasbegun
 BRANCH=dev_ssl
 COMMIT=$(git rev-parse --short HEAD)
-echo "Build $IMAGE_NAME based on $COMMIT from $REPO/$BRANCH."
+echo "Build $IMAGE_NAME based on $COMMIT from $REPO:$BRANCH."
 
 docker build -t $IMAGE_NAME \
   --build-arg=REPO=$REPO \
