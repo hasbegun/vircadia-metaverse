@@ -70,11 +70,13 @@ initializeConfiguration()
   expr.use(morgan('dev', morganOptions));
 
   // Set up the CORS allows headers and option handshakes
-  expr.use(cors({
-    'origin': '*',
-    'allowedHeaders': [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
-    'credentials': true
-  } ));
+  // expr.use(cors({
+  //   'allowedHeaders': [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
+  //   'credentials': true
+  // } ));
+
+  // allow all. this is for test only.
+  expr.use(cors());
 
   // Most of the requests are JSON in an out.
   // This parses the JSON and adds 'Request.body'
