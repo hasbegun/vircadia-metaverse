@@ -31,11 +31,11 @@ else
 fi
 
 if [ -z "$6" ]; then
-  CN="innoxai.com"
+  DOMAIN="innoxai.com"
 else
-  CN=$6
+  DOMAIN=$6
 fi
-./keygen.sh "$C" "$ST" "$L" "$O" "$OU" "$CN"
+./keygen.sh "$C" "$ST" "$L" "$O" "$OU" "$DOMAIN"
 
 IMAGE_NAME=metaverse-server
 # change repo and branch for debug and dev.
