@@ -69,14 +69,26 @@ initializeConfiguration()
   // Setup the logger of messages
   expr.use(morgan('dev', morganOptions));
 
+  let allowlist = [Config.metaverse['dashboard-url'],
+                   Config.metaverse['default-ice-server-url']];
+  let corsOptionsDelegate = function (req, callback) {
+    let corsOptions = {'allowedHeaders': [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
+                       'credentials': true, 'origin': true};
+    if (allowlist.indexOf(req.header('Origin')) === -1) {
+      corsOptions.origin = false;
+    }
+    callback(null, corsOptions);
+  };
+
   // Set up the CORS allows headers and option handshakes
+  // this is original
   // expr.use(cors({
   //   'allowedHeaders': [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
   //   'credentials': true
   // } ));
 
-  // allow all. this is for test only.
-  expr.use(cors());
+  // try to allow dashboard
+  expr.use(cors(corsOptionsDelegate));
 
   // Most of the requests are JSON in an out.
   // This parses the JSON and adds 'Request.body'
