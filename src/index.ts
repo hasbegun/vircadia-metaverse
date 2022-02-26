@@ -92,7 +92,9 @@ initializeConfiguration()
 
   // second try
   const allowedOrigins = [Config.metaverse['dashboard-url'],
-                          Config.metaverse['default-ice-server-url']];
+                          Config.metaverse['default-ice-server-url'],
+                          'https://domain.innoxai.com'
+                        ];
   const options: cors.CorsOptions = {
     allowedHeaders: [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
     credentials: true,
