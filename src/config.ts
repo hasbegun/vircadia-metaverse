@@ -119,7 +119,7 @@ export let Config = {
     },
     // Setup for MongoDB access
     'database': {
-        'db-host': 'vircadia-mongodb',
+        'db-host': 'mongodb.innoxai.com',
         'db-port': 27017,
         'db': 'tester',
         'db-user': 'metaverse',
