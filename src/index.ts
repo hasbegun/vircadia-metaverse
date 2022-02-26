@@ -93,7 +93,7 @@ initializeConfiguration()
   // second try
   const allowedOrigins = [Config.metaverse['dashboard-url'],
                           Config.metaverse['default-ice-server-url']];
-  const options: cors.corsOptions = {
+  const options: cors.CorsOptions = {
     origin: allowedOrigins
   };
   expr.use(cors(options));
