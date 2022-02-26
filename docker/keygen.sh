@@ -49,4 +49,4 @@ openssl req -x509 -nodes -days 365 \
 fi
 echo "Your key and cert can be found at files dir."
 echo "Country: $C, State: $ST, City: $L, Org: $O, Dept: $OU, CN:$CN"
-echo "Key file: $KEY, Cert file: $CERT"
+echo "Key file: $KEY, Cert file: $CRT"
