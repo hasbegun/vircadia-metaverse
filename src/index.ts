@@ -72,13 +72,11 @@ initializeConfiguration()
 
   // Set up the CORS allows headers and option handshakes
   // this is original
-  expr.use(cors({
-    'allowedHeaders': [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
-    'credentials': true,
-    'Access-Control-Allow-Origin': '*'
-  } ));
-  expr.use(cors());
-
+  // expr.use(cors({
+  //   'allowedHeaders': [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
+  //   'credentials': true
+  // } ));
+  //---------------------------
   // try to allow dashboard
   // let allowlist = [Config.metaverse['dashboard-url'],
   //                  Config.metaverse['default-ice-server-url']];
@@ -91,6 +89,15 @@ initializeConfiguration()
   //   callback(null, corsOptions);
   // };
   // expr.use(cors(corsOptionsDelegate));
+
+  // second try
+  const allowedOrigins = [Config.metaverse['dashboard-url'],
+                          Config.metaverse['default-ice-server-url']];
+  const options: cors.corsOptions = {
+    origin: allowedOrigins
+  };
+  expr.use(cors(options));
+  // ------------------
 
   // Most of the requests are JSON in an out.
   // This parses the JSON and adds 'Request.body'
