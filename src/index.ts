@@ -94,6 +94,8 @@ initializeConfiguration()
   const allowedOrigins = [Config.metaverse['dashboard-url'],
                           Config.metaverse['default-ice-server-url']];
   const options: cors.CorsOptions = {
+    allowedHeaders: [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
+    credentials: true,
     origin: allowedOrigins
   };
   expr.use(cors(options));
