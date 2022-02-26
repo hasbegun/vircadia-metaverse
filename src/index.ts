@@ -69,14 +69,12 @@ initializeConfiguration()
   // Setup the logger of messages
   expr.use(morgan('dev', morganOptions));
 
-
   // Set up the CORS allows headers and option handshakes
-  // this is original
-  // expr.use(cors({
-  //   'allowedHeaders': [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
-  //   'credentials': true
-  // } ));
-  //---------------------------
+  expr.use(cors({
+    'allowedHeaders': [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
+    'credentials': true
+  } ));
+
   // try to allow dashboard
   // let allowlist = [Config.metaverse['dashboard-url'],
   //                  Config.metaverse['default-ice-server-url']];
@@ -91,17 +89,17 @@ initializeConfiguration()
   // expr.use(cors(corsOptionsDelegate));
 
   // second try
-  const allowedOrigins = [Config.metaverse['dashboard-url'],
-                          Config.metaverse['default-ice-server-url'],
-                          'https://domain.innoxai.com'
-                        ];
-  const options: cors.CorsOptions = {
-    allowedHeaders: [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
-    credentials: true,
-    origin: allowedOrigins
-  };
-  Logger.info(`cors options ${allowedOrigins}`);
-  expr.use(cors(options));
+  // const allowedOrigins = [Config.metaverse['dashboard-url'],
+  //                         Config.metaverse['default-ice-server-url'],
+  //                         'https://domain.innoxai.com'
+  //                       ];
+  // const options: cors.CorsOptions = {
+  //   allowedHeaders: [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
+  //   credentials: true,
+  //   origin: allowedOrigins
+  // };
+  // Logger.info(`cors options ${allowedOrigins}`);
+  // expr.use(cors(options));
   // ------------------
 
   // Most of the requests are JSON in an out.
