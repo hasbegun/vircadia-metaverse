@@ -100,6 +100,7 @@ initializeConfiguration()
     credentials: true,
     origin: allowedOrigins
   };
+  Logger.info(`cors options $allowedOrigins`);
   expr.use(cors(options));
   // ------------------
 
