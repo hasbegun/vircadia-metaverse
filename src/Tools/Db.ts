@@ -54,6 +54,7 @@ export async function setupDB(): Promise<void> {
             optionsSpec += `?authSource=${Config.database["db-authdb"]}`;
         };
         connectUrl = `mongodb://${userSpec}@${hostSpec}/${optionsSpec}`;
+        Logger.info(`setupDb: connecting to DB at: mongodb://${userSpec}@${hostSpec}/${optionsSpec}`);
         Logger.debug(`setupDb: connecting to DB at: mongodb://USER@${hostSpec}/${optionsSpec}`);
     };
 
