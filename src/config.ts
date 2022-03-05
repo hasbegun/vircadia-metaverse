@@ -75,7 +75,7 @@ export let Config = {
         // When account of this name is created, add 'admin' role to it
         //    Initially as empty so random people cannot create an admin account
         //    The account named here MUST be controlled by the server's admin
-        'base-admin-account': '',
+        'base-admin-account': 'adminer',
 
         // If to assume domain network_address if on is not set
         'fix-domain-network-address': true,
