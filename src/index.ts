@@ -41,7 +41,6 @@ import { initMonitoring } from '@Monitoring/Monitoring';
 import { setupDB } from '@Tools/Db';
 import { IsNotNullOrEmpty } from '@Tools/Misc';
 import { Logger, initLogging, morganOptions } from '@Tools/Logging';
-import { CounterStat } from '@Monitoring/CounterStat';
 
 initializeConfiguration()
 .catch ( err => {
@@ -70,41 +69,23 @@ initializeConfiguration()
   // Setup the logger of messages
   expr.use(morgan('dev', morganOptions));
 
+  // --- original
   // Set up the CORS allows headers and option handshakes
-  const allowedOrigins = ['https://dashboard.innoxai.com', 'https://domain.innoxai.com'];
+  // expr.use(cors({
+  //   'allowedHeaders': [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
+  //   'credentials': true
+  // } ));
+  // --------------
+
+  const allowedOrigins = ['https://dashboard.innoxai.com', 'https://domain.innoxai.com',
+    'http://dashboard.innoxai.com', 'http://domain.innoxai.com'];
   const options: cors.CorsOptions = {
     origin: allowedOrigins,
     allowedHeaders: [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
     credentials: true
   };
+
   expr.use(cors(options));
-
-  // try to allow dashboard
-  // let allowlist = [Config.metaverse['dashboard-url'],
-  //                  Config.metaverse['default-ice-server-url']];
-  // let corsOptionsDelegate = function (req, callback) {
-  //   let corsOptions = {'allowedHeaders': [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
-  //                      'credentials': true, 'origin': true};
-  //   if (allowlist.indexOf(req.header('Origin')) === -1) {
-  //     corsOptions.origin = false;
-  //   }
-  //   callback(null, corsOptions);
-  // };
-  // expr.use(cors(corsOptionsDelegate));
-
-  // second try
-  // const allowedOrigins = [Config.metaverse['dashboard-url'],
-  //                         Config.metaverse['default-ice-server-url'],
-  //                         'https://domain.innoxai.com'
-  //                       ];
-  // const options: cors.CorsOptions = {
-  //   allowedHeaders: [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
-  //   credentials: true,
-  //   origin: allowedOrigins
-  // };
-  // Logger.info(`cors options ${allowedOrigins}`);
-  // expr.use(cors(options));
-  // ------------------
 
   // Most of the requests are JSON in an out.
   // This parses the JSON and adds 'Request.body'
