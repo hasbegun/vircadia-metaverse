@@ -71,7 +71,7 @@ initializeConfiguration()
   expr.use(morgan('dev', morganOptions));
 
   // Set up the CORS allows headers and option handshakes
-  const allowedOrigins = ['dashboard.innoxai.com', 'domain.innoxai.com'];
+  const allowedOrigins = ['https://dashboard.innoxai.com', 'https://domain.innoxai.com'];
   const options: cors.CorsOptions = {
     origin: allowedOrigins,
     allowedHeaders: [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
