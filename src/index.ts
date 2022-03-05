@@ -41,6 +41,7 @@ import { initMonitoring } from '@Monitoring/Monitoring';
 import { setupDB } from '@Tools/Db';
 import { IsNotNullOrEmpty } from '@Tools/Misc';
 import { Logger, initLogging, morganOptions } from '@Tools/Logging';
+import { CounterStat } from '@Monitoring/CounterStat';
 
 initializeConfiguration()
 .catch ( err => {
@@ -70,10 +71,13 @@ initializeConfiguration()
   expr.use(morgan('dev', morganOptions));
 
   // Set up the CORS allows headers and option handshakes
-  expr.use(cors({
-    'allowedHeaders': [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
-    'credentials': true
-  } ));
+  const allowedOrigins = ['dashboard.innoxai.com', 'domain.innoxai.com'];
+  const options: cors.CorsOptions = {
+    origin: allowedOrigins,
+    allowedHeaders: [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
+    credentials: true
+  };
+  expr.use(cors(options));
 
   // try to allow dashboard
   // let allowlist = [Config.metaverse['dashboard-url'],
