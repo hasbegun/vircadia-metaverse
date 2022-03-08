@@ -80,7 +80,7 @@ initializeConfiguration()
   const allowedOrigins = ['https://dashboard.innoxai.com', 'https://domain.innoxai.com',
     'http://dashboard.innoxai.com', 'http://domain.innoxai.com'];
   const options: cors.CorsOptions = {
-    origin: allowedOrigins,
+    origin: '*',
     allowedHeaders: [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
     credentials: true
   };
