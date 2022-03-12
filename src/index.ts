@@ -77,12 +77,14 @@ initializeConfiguration()
   // } ));
   // --------------
 
-  const allowedOrigins = ['https://dashboard.innoxai.com', 'https://domain.innoxai.com',
-    'http://dashboard.innoxai.com', 'http://domain.innoxai.com'];
+  const allowedOrigins = ['https://dashboard.innoxai.com', 'https://domain.innoxai.com'];
   const options: cors.CorsOptions = {
-    origin: '*',
-    allowedHeaders: [ 'authorization', 'content-type', 'x-vircadia-error-handle' ],
-    credentials: true
+    allowedHeaders: [ 'Origin', 'authorization', 'content-type',
+      'x-vircadia-error-handle' ],
+    credentials: true,
+    methods:'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+    origin: allowedOrigins,
+    preflightContinue: false, // need to justify this option. Also more sure line 141 is good.
   };
 
   expr.use(cors(options));
@@ -135,6 +137,9 @@ initializeConfiguration()
 
   // If all the other routing didn't work, finally make errors
   expr.use(createAPIRouter('routes-last'));
+
+  //enable pre-flight
+  expr.options('*', cors(options));
 
   // Build server to listen for requests
   // If certificates are provided, create an https server
