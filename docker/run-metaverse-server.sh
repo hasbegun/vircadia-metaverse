@@ -11,7 +11,7 @@ DVERSION=latest
 IMG_NAME=metaverseserver
 
 docker run -d \
-    --name=metaverseserver \
+    --name=metaverse-server \
     --restart=unless-stopped \
     -p 9400:9400 \
     -e IAMUS_CONFIG_FILE=/home/cadia/config/iamus.json \
